@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ receta.nombre }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="card mx-auto" style="max-width: 700px;">
+    {% if receta.imagen %}
+      <img src="{{ receta.imagen.url }}" class="card-img-top" alt="{{ receta.nombre }}">
+    {% endif %}
+    <div class="card-body">
+      <h2 class="card-title">{{ receta.nombre }}</h2>
+
+      <h4>Ingredientes</h4>
+      <p class="card-text">{{ receta.ingredientes|linebreaksbr }}</p>
+
+      <h4>Instrucciones</h4>
+      <p class="card-text">{{ receta.instrucciones|linebreaksbr }}</p>
+
+      <a href="{% url 'inicio' %}" class="btn btn-secondary mt-3">Volver al inicio</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{%extends "base.html" %} 
+
+{%block title %}Inicio{%endblock %} 
+
+{%block content %}
+
+<div class="bg-info bg-gradient text-center p-5 m-0">
+  <div class="container py-5">
+    <h1 class="display-4 fw-bold">¡Bienvenido a la App de Recetas!</h1>
+    <p class="lead">Explora nuestras deliciosas recetas.</p>
+    <a href="#" class="btn btn-light btn-lg mt-3 ">Descubre Más</a>
+  </div>
+</div>
+
+<div class="container py-5" id="container-recetas">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for receta in recetas %}
+      <div class="col">
+        <div class="card h-100">
+          {% if receta.imagen %}
+      <img src="{{ receta.imagen.url }}" class="card-img-top" alt="{{ receta.nombre }}">
+    {% endif %}
+          <div class="card-body d-flex flex-column">
+            <h6 class="card-title">{{ receta.nombre }}</h6>
+            <a href="{% url 'receta_detalle' receta.id %}" class="btn btn-primary mt-auto">Ver receta</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{%endblock %}
